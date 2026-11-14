@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   parse_prep.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:21:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 19:34:20 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/13 19:41:35 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
 
-/* I've decided to return specific errors specifying why the map is not valid.
- There's still not real map validation from the rules but only basic checks
- 0 = good/no errors
--1 = doesn't exist or fd error
- 1 = not valid (any rules that are invalid following subject) TODO:
-*/
-
-static void	output_validation(int error, char *path_to_map)
-{
-	if (error == 1)
-		(ft_putstr(path_to_map), ft_putendl_fd(" is not valid", 2));
-	if (error == -1)
-		(ft_putstr(path_to_map), ft_putendl_fd(" does not exist", 2));
-}
-
 static bool	check_extension(char *str, int len)
 {
+	if (len < 4)
+		return (false);
 	if (str[len - 1] == 'b' && str[len - 2] == 'u' && str[len - 3] == 'c'
 		&& str[len - 4] == '.')
 		return (true);
@@ -41,56 +28,75 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 
 	new = malloc(sizeof(char *) * (count_len + 2));
 	if (!new)
-		return (ft_putendl_fd("Error: couldn't malloc new map", 2)
-			, ft_strfree(map), free(line), NULL);
+		return (ft_putendl_fd("Error: couldn't malloc new map", 2), NULL);
 	while (++i < count_len)
 		new[i] = map[i];
 	free(map);
+	if (ft_strchr(line, '\n'))
+		*ft_strchr(line, '\n') = '\0';
 	new[count_len] = line;
 	new[count_len + 1] = NULL;
 	return (new);
 }
 
-int	dup_map(t_game *game, int fd)
+char	*skip_empty(char *line, int fd)
 {
-	char	*line;
-	char	**map;
-	int		count_len;
-	int		i;
-
-	map = NULL;
-	count_len = 0;
 	while (1)
 	{
-		i = -1;
 		line = get_next_line(fd);
-		if (!line || !line[0])
-			break ;
-		map = expand_map(map, count_len, i, line);
-		if (!map)
-			break ;
-		count_len++;
+		if (!line || line[0] != '\n')
+			return (line);
+		free(line);
 	}
-	if (!map)
-		return (1);
-	return (game->map = map, 0);
 }
 
-int	validate_map(t_game *game)
+int	dup_buffer(t_game *game, int fd)
 {
-	int		map_fd;
-	int		error;
+	char	*line;
+	char	***buffer;
+	int		count_len;
+
+	buffer = &game->config;
+	count_len = -1;
+	line = NULL;
+	while (++count_len >= 0)
+	{
+		line = skip_empty(line, fd);
+		if (!line)
+			break ;
+		if (line[0] == '1' && buffer == &game->config)
+		{
+			buffer = &game->map;
+			count_len = 0;
+		}
+		*buffer = expand_map(*buffer, count_len, -1, line);
+		if (!*buffer)
+			return (ft_strfree(*buffer), free(line), close(fd), -1);
+	}
+	if (!game->config || !game->map)
+		return (ft_putendl_fd("Error\nempty map or header", 2), 1);
+	return (0);
+}
+
+int	file_check(t_game *game)
+{
+	int	map_fd;
+	int	error;
 
 	error = 0;
 	map_fd = open(game->path_to_map, O_RDONLY);
 	if (map_fd == -1)
-		return (output_validation(error = -1, game->path_to_map), error);
+		return (ft_putendl_fd("Error\ncannot open map: ", 2), 1);
 	if (!check_extension(game->path_to_map, ft_strlen(game->path_to_map)))
-		error = 1;
-	if (dup_map(game, map_fd))
-		error = -1;
-	output_validation(error, game->path_to_map);
-	return (error);
+	{
+		close(map_fd);
+		return (ft_putendl_fd("Error\ninvalid .cub extension", 2), 1);
+	}
+	error = dup_buffer(game, map_fd);
+	close(map_fd);
+	if (error)
+		return (error);
+	if (validate(game))
+		return (1);
+	return (0);
 }
-
-// TODO: Entry point to the real validation

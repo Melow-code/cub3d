@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 17:59:12 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/11 22:36:08 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/14 19:10:07 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ int	safe_exit(t_game *game, int code)
 	{
 		ft_strfree(game->map);
 		game->map = NULL;
+	}
+	if (game->config != NULL)
+	{
+		ft_strfree(game->config);
+		game->config = NULL;
 	}
 	if (game->mlx_ptr && game->win_ptr)
 	{

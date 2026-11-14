@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/14 09:24:46 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/14 21:26:27 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void	create_canvas(t_game *game)
 	render_texture(game, &game->w_south, 150, 200);
 	render_texture(game, &game->w_est, 250, 200);
 	render_texture(game, &game->w_west, 350, 200);
-	generate_minimap(game, 6, 5);
+	generate_minimap(game);
 }

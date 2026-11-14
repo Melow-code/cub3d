@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 17:27:26 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/14 17:37:24 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/14 21:10:16 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	draw_line(t_game *game, t_line *line, int color)
 	int i;
 
 	i = 0;
-	while(i < line->step)
+	while(i <= line->step)
 	{
 		put_pixel((int)round(line->curr_x), (int)round(line->curr_y), color, game);
 		line->curr_x += line->inc_x; 
@@ -26,15 +26,15 @@ static void	draw_line(t_game *game, t_line *line, int color)
 	}
 }
 
-void	mini_dir_player(t_game *game, t_line *line)
+void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
 {
 	t_player	*player;
 
 	player = &game->player;
-	line->x0 = MINI_OFFSET_X + (player->pos_x * TILE_SIZE);
-	line->y0 = MINI_OFFSET_Y + (player->pos_y * TILE_SIZE);
-	line->x1 = line->x0 + player->dir_x * LINE_LEN;
-	line->y1 = line->y0 + player->dir_y * LINE_LEN;
+	line->x0 = (double)MINI_OFFSET_X + (player->pos_x * (double)m->tile_size);
+	line->y0 = (double)MINI_OFFSET_Y + (player->pos_y * (double)m->tile_size);
+	line->x1 = line->x0 + player->dir_x * (m->tile_size * 1.1);
+	line->y1 = line->y0 + player->dir_y * (m->tile_size * 1.1);
 
 	line->dx = line->x1 - line->x0;
 	line->dy = line->y1 - line->y0;
@@ -44,7 +44,7 @@ void	mini_dir_player(t_game *game, t_line *line)
 		line->step = abs((int)line->dy);
 	if (line->step == 0)
 	{
-		put_pixel((int)round(line->dx),(int)round(line->dy), 0xFFFF00, game);
+		put_pixel((int)round(line->x0),(int)round(line->x0), 0xFFFF00, game);
 		return ;
 	}
 	line->inc_x = line->dx / (float)line->step;

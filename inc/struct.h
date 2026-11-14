@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
-/*   Updated: 2026/11/12 17:23:35 by ch               ###   ########.ch       */
+/*   Updated: 2026/11/14 21:22:05 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ typedef struct s_line
 	double	curr_y;
 	int		step;
 }			t_line;
+
+typedef struct s_minimap
+{
+	double	offset_x;
+	double	offset_y;
+	int		height;
+	int		width;
+	int		tile_size;
+}			t_minimap;
 
 typedef struct s_player
 {
@@ -49,25 +58,27 @@ typedef struct s_player
 
 typedef struct s_img
 {
-	char	*path;
-	void	*img_ptr;
-	void	*addr;
-	int		heigth;
-	int		width;
-	int		bpp;
-	int		endian;
-	int		size_line;
-}			t_img;
+	char		*path;
+	void		*img_ptr;
+	void		*addr;
+	int			heigth;
+	int			width;
+	int			bpp;
+	int			endian;
+	int			size_line;
+}				t_img;
 
 typedef struct s_game
 {
 	int			map_fd;
 	void		*mlx_ptr;
 	void		*win_ptr;
+	char		**config;
 	char		**map;
 	char		*path_to_map;
-	int			count_lines;
-	int			max_length;
+	int			cursorcreate_ca;
+	int			c_color[3];
+	int			f_color[3];
 	t_player	player;
 
 	t_img		screen;
@@ -75,5 +86,5 @@ typedef struct s_game
 	t_img		w_south;
 	t_img		w_est;
 	t_img		w_west;
-}			t_game;
+}				t_game;
 #endif
