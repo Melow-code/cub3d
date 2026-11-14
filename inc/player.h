@@ -21,9 +21,12 @@ enum	e_orient
 	OW
 };
 
-int		load_player_dt(t_game *game);
-int		handle_keypressed(int keycodde, void *param);
-int		handle_keyrelease(int keycodde, void *param);
-void	update_movement(t_game *game);
-void	handle_rotation(t_player *p);
+int			load_player_dt(t_game *game);
+int			handle_keypressed(int keycodde, void *param);
+int			handle_keyrelease(int keycodde, void *param);
+void		update_movement(t_game *game);
+void		handle_rotation(t_player *p);
+void		draw_minimap_player(t_game *game, int px, int py);
+void		mini_dir_player(t_game *game, t_line *line);
+
 #endif // PLAYER_H

@@ -13,6 +13,21 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct s_line
+{
+	double	x0;
+	double	y0;
+	double	x1;
+	double	y1;
+	double	dx;
+	double	dy;
+	double	inc_x;
+	double	inc_y;
+	double	curr_x;
+	double	curr_y;
+	int		step;
+}			t_line;
+
 typedef struct s_player
 {
 	double	pos_x;

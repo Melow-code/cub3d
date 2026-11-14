@@ -20,6 +20,12 @@
 # define HEIGHT 1080
 # define WIDTH 1920
 
+//mini_map
+# define TILE_SIZE 30
+# define LINE_LEN (TILE_SIZE * 1.1)
+# define MINI_OFFSET_X 100
+# define MINI_OFFSET_Y 400
+
 int		run_win_mlx(t_game *game);
 int		game_loop(t_game *game);
 void	create_canvas(t_game *game);

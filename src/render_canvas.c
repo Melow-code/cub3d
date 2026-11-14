@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_canvas.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/11 23:48:57 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/14 09:24:46 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,4 @@ void	create_canvas(t_game *game)
 	render_texture(game, &game->w_est, 250, 200);
 	render_texture(game, &game->w_west, 350, 200);
 	generate_minimap(game, 6, 5);
-//	draw_square(game, WIDTH / 2, 30, 60);
-//	draw_square(game, WIDTH / 5, 60, 20);
 }
