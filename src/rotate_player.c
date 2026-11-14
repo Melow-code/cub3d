@@ -21,7 +21,6 @@ void	handle_rotation(t_player *p)
 
 	if (!p || (!p->key_left && !p->key_rigth) || (p->key_left && p->key_rigth))
 		return ;
-
 	if (p->key_left)
 	{
 		cos_rot = cos(-p->rot_speed);

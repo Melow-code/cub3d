@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
-/*   Updated: 2026/11/14 21:22:05 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/14 22:15:52 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_minimap
 	int		height;
 	int		width;
 	int		tile_size;
+	int		color_tile;
 }			t_minimap;
 
 typedef struct s_player

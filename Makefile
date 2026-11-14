@@ -26,7 +26,8 @@ SRC = main.c \
 	keys_actions.c \
 	init_graphics.c \
 	rotate_player.c \
-	mini_player.c
+	mini_player.c \
+	utils_minimap.c
 
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 

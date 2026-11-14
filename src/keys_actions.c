@@ -12,7 +12,6 @@
 
 #include "../inc/main.h"
 
-
 int	handle_keypressed(int keycode, void *param)
 {
 	t_game	*game;

@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:13:23 by ch                #+#    #+#             */
-/*   Updated: 2026/11/14 19:52:25 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/14 22:22:28 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ int	ft_strstrk(char *s1, char *s2)
 		s1++;
 	}
 	return (0);
+}
+
+void	update_movement(t_game *game)
+{
+	t_player	*p;
+
+	p = &game->player;
+	move_player(p, game->map);
 }
 
 static int	set_player_plane(t_player *player, const int dir)

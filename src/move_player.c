@@ -60,11 +60,3 @@ int	move_player(t_player *p, char **map)
 		move_left(p, map, p->move_speed, 0.30);
 	return (0);
 }
-
-void	update_movement(t_game *game)
-{
-	t_player	*p;
-
-	p = &game->player;
-	move_player(p, game->map);
-}

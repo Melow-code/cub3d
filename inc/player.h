@@ -28,5 +28,7 @@ void		update_movement(t_game *game);
 void		handle_rotation(t_player *p);
 void		draw_minimap_player(t_game *game, int px, int py);
 void		mini_dir_player(t_game *game, t_line *line, t_minimap *m);
+void		update_movement(t_game *game);
+int			move_player(t_player *p, char **map);
 
 #endif // PLAYER_H

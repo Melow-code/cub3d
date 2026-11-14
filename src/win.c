@@ -21,7 +21,7 @@ int	close_window(void *param)
 	return (0);
 }
 
-void init_graphics(t_game *game)
+void	init_graphics(t_game *game)
 {
 	game->screen.img_ptr = mlx_new_image(game->mlx_ptr, WIDTH, HEIGHT);
 	if (!game->screen.img_ptr)
@@ -32,12 +32,13 @@ void init_graphics(t_game *game)
 		exit(safe_exit(game, 42));
 }
 
-int game_loop(t_game *game)
+int	game_loop(t_game *game)
 {
 	update_movement(game);
 	handle_rotation(&game->player);
 	create_canvas(game);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->screen.img_ptr,	0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->screen.img_ptr, 0, 0);
 	return (0);
 }
 
@@ -51,8 +52,7 @@ int	run_win_mlx(t_game *game)
 	mlx_hook(game->win_ptr, 2, 1L << 0, (void *)handle_keypressed, game);
 	mlx_hook(game->win_ptr, 3, 1L << 1, (void *)handle_keyrelease, game);
 	mlx_hook(game->win_ptr, 17, 9, (void *)close_window, game);
-	mlx_loop_hook(game->mlx_ptr,(void *)game_loop, game);
+	mlx_loop_hook(game->mlx_ptr, (void *)game_loop, game);
 	mlx_loop(game->mlx_ptr);
 	return (0);
 }
-
