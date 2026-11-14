@@ -17,10 +17,8 @@ bool	check_map_last(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] == '\n' || line[i] == ' ')
-	{
+	while (line[i] == '\n' || line[i] == ' ' || line[i] == '\t')
 		i++;
-	}
 	if ((is_identifier(line + i)) < 6)
 	{
 		ft_putendl_fd("Error\nFound map before header", 2);
@@ -36,15 +34,24 @@ int	skip_empty(char **line, int fd, char ***buffer, t_game *game)
 		*line = get_next_line(fd);
 		if (!*line)
 			return (0);
+		if (buffer == &game->map && check_map_last(*line))
+			return (free(*line), *line = NULL, -1);
 		if ((*line)[0] != '\n')
 			return (1);
-		if (buffer == &game->map)
-			if (check_map_last(*line))
-				return (-1);
-		return (free(*line), ft_putendl_fd("Error\nFound newline on map", 2),
-			-1);
 		free(*line);
+		if (buffer == &game->map)
+			return (ft_putendl_fd("Error\nFound newline on map", 2), -1);
 	}
+}
+
+static	bool	find_start_map(char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i] == '\t' || line[i] == ' ')
+		;
+	return (line[i] == '1');
 }
 
 int	dup_buffer(t_game *game, int fd)
@@ -61,7 +68,7 @@ int	dup_buffer(t_game *game, int fd)
 			return (1);
 		if (!line)
 			break ;
-		if (line[0] == '1' && buffer == &game->config)
+		if (find_start_map(line) && buffer == &game->config)
 		{
 			buffer = &game->map;
 			count_len = 0;

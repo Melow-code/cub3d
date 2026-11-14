@@ -82,12 +82,12 @@ static int	check_path(t_img *img)
 		return (ft_putendl_fd("Error\n couldn't setup wall textures", 2), 1);
 	fd = open(img->path, O_RDONLY);
 	if (fd == -1)
-		return (ft_putendl_fd("Error\ncouldn't open texture", 2), 1);
+		return (close(fd), ft_putendl_fd("Error\ncouldn't open texture", 2), 1);
 	fstat(fd, &info);
 	if (!S_ISREG(info.st_mode))
-		return (ft_putendl_fd("Error\nPath is a directory", 2), 1);
+		return (close (fd), ft_putendl_fd("Error\nPath is a directory", 2), 1);
 	if (!check_extension(img->path))
-		return (ft_putendl_fd("Error\nBad file extension", 2), 1);
+		return (close(fd), ft_putendl_fd("Error\nBad file extension", 2), 1);
 	close(fd);
 	return (0);
 }

@@ -28,7 +28,7 @@ char	**expand_map(char **map, int count_len, int i, char *line)
 
 	new = malloc(sizeof(char *) * (count_len + 2));
 	if (!new)
-		return (ft_putendl_fd("Error: couldn't malloc new map", 2), NULL);
+		return (ft_strfree(map), ft_putendl_fd("Error: couldn't malloc new map", 2), NULL);
 	while (++i < count_len)
 		new[i] = map[i];
 	free(map);

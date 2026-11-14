@@ -51,11 +51,8 @@ static int	set_player_dir(t_player *player, const int dir)
 
 int	load_player_dt(t_game *game)
 {
-	int	orientation;
-
 	(void)game;
-	orientation = OW;
-	set_player_dir(&game->player, orientation);
-	set_player_plane(&game->player, orientation);
+	set_player_dir(&game->player, game->player.orientation);
+	set_player_plane(&game->player, game->player.orientation);
 	return (1);
 }

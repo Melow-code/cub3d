@@ -23,7 +23,14 @@ int	check_pos(t_game *game, char c, int x, int y)
 		}
 		game->player.pos_x = x + 0.5;
 		game->player.pos_y = y + 0.5;
-		game->player.orientation = c;
+		if (c == 'N')
+			game->player.orientation = ON;
+		else if (c == 'S')
+			game->player.orientation = OS;
+		else if (c == 'W')
+			game->player.orientation = OW;
+		else if (c == 'E')
+			game->player.orientation = OE;
 	}
 	return (0);
 }
