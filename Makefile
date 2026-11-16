@@ -28,8 +28,7 @@ SRC = main.c \
     init_graphics.c \
     rotate_player.c \
     mini_player.c \
-    utils_minimap.c \
-    debug/main.c \
+    utils_minimap.c 
 
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
