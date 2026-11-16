@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "main.h"
+#include <sys/stat.h>
 
 int	check_value(char *line, int *i, int *result, int j)
 {
@@ -59,15 +60,34 @@ int	validate_rgb(t_game *game, char *line, int id)
 	return (0);
 }
 
+static int	check_extension(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	if (len < 4)
+		return (false);
+	if (str[len - 1] == 'm' && str[len - 2] == 'p' && str[len - 3] == 'x'
+		&& str[len - 4] == '.')
+		return (true);
+	return (false);
+}
+
 static int	check_path(t_img *img)
 {
-	int	fd;
+	int			fd;
+	struct stat	info;
 
 	if (!img->path || !img->path[0])
 		return (ft_putendl_fd("Error\n couldn't setup wall textures", 2), 1);
 	fd = open(img->path, O_RDONLY);
 	if (fd == -1)
-		return (ft_putendl_fd("Error\ncouldn't open texture", 2), 1);
+		return (close(fd), ft_putendl_fd("Error\ncouldn't open texture", 2), 1);
+	fstat(fd, &info);
+	if (!S_ISREG(info.st_mode))
+		return (close (fd), ft_putendl_fd("Error\nPath is a directory", 2), 1);
+	if (!check_extension(img->path))
+		return (close(fd), ft_putendl_fd("Error\nBad file extension", 2), 1);
 	close(fd);
 	return (0);
 }
@@ -92,7 +112,7 @@ int	validate_texture_path(t_game *game, char *line, int id)
 	else
 		return (1);
 	img->path = ft_strtrim(line + i, " \t");
-	if (check_path(img))
+	if (check_path(img) != 0)
 		return (1);
 	return (0);
 }

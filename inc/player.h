@@ -15,7 +15,7 @@
 
 enum	e_orient
 {
-	ON,
+	ON = 1,
 	OS,
 	OE,
 	OW

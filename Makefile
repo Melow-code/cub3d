@@ -12,22 +12,23 @@ ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
 	debug/main.c \
 	parsing/parse_prep.c \
+	parsing/check_order.c \
 	parsing/validation.c \
 	parsing/config/headers.c \
 	parsing/config/headers_values.c \
-	parsing/map/validation.c \
-	win.c \
-	render_canvas.c \
-	utils.c \
-	draw.c \
-	mini_map.c \
-	player.c \
-	move_player.c \
-	keys_actions.c \
-	init_graphics.c \
-	rotate_player.c \
-	mini_player.c \
-	utils_minimap.c
+    parsing/map/validation.c \
+    win.c \
+    render_canvas.c \
+    utils.c \
+    draw.c \
+    mini_map.c \
+    player.c \
+    move_player.c \
+    keys_actions.c \
+    init_graphics.c \
+    rotate_player.c \
+    mini_player.c \
+    utils_minimap.c 
 
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 

@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 16:11:16 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/13 19:39:58 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/14 17:15:59 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,14 @@ int	check_pos(t_game *game, char c, int x, int y)
 		}
 		game->player.pos_x = x + 0.5;
 		game->player.pos_y = y + 0.5;
-		game->player.orientation = c;
+		if (c == 'N')
+			game->player.orientation = ON;
+		else if (c == 'S')
+			game->player.orientation = OS;
+		else if (c == 'W')
+			game->player.orientation = OW;
+		else if (c == 'E')
+			game->player.orientation = OE;
 	}
 	return (0);
 }
@@ -36,7 +43,7 @@ int	check_valid_char(char **map, t_game *game)
 	i = -1;
 	while (map[++i])
 	{
-		j = 0;
+		j = -1;
 		while (map[i][++j])
 		{
 			if (!ft_strchr("01NSWE ", map[i][j]))
@@ -67,12 +74,14 @@ int	check_map(char **map)
 			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
 				|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
+				if (x == 0 || y == 0 || !map[y + 1] || x >= (int)ft_strlen(map[y
+							- 1]) || x >= (int)ft_strlen(map[y + 1]))
+					return (ft_putendl_fd("Error\nMap not closed", 2), 1);
 				if ((map[y][x + 1] == '\0' || map[y][x + 1] == ' ') || (map[y
 						+ 1][x] == '\0' || map[y + 1][x] == ' ') || (map[y][x
 						- 1] == '\0' || map[y][x - 1] == ' ') || (map[y
 						- 1][x] == '\0' || map[y - 1][x] == ' '))
-					return (ft_putendl_fd("Error\nMap not closed by walls", 2),
-						1);
+					return (ft_putendl_fd("Error\nMap not closed", 2), 1);
 			}
 		}
 	}
