@@ -5,26 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 18:03:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/13 16:16:30 by rpinheir         ###   ########.ch       */
+/*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
+/*   Updated: 2026/11/14 22:15:52 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct s_line
+{
+	double	x0;
+	double	y0;
+	double	x1;
+	double	y1;
+	double	dx;
+	double	dy;
+	double	inc_x;
+	double	inc_y;
+	double	curr_x;
+	double	curr_y;
+	int		step;
+}			t_line;
+
+typedef struct s_minimap
+{
+	double	offset_x;
+	double	offset_y;
+	int		height;
+	int		width;
+	int		tile_size;
+	int		color_tile;
+}			t_minimap;
+
 typedef struct s_player
 {
-	float		pos_x;
-	float		pos_y;
-	float		dir_x;
-	float		dir_y;
-	float		plane_x;
-	float		plane_y;
-	char		orientation;
-	int			rot_speed;
-	int			move_speed;
-}				t_player;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	char	orientation;
+	double	rot_speed;
+	double	move_speed;
+	bool	key_w;
+	bool	key_s;
+	bool	key_a;
+	bool	key_d;
+	bool	key_rigth;
+	bool	key_left;
+}			t_player;
 
 typedef struct s_img
 {
