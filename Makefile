@@ -10,17 +10,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstrict-prototypes -Wpointer-arith
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
-	  debug/main.c \
-	  parsing/parse_prep.c \
-	  parsing/check_order.c \
-	  parsing/validation.c \
-	  parsing/config/headers.c \
-	  parsing/config/headers_values.c \
-    parsing/map/validation.c \
-    parsing/parse_prep.c \
-    parsing/validation.c \
-    parsing/config/headers.c \
-    parsing/config/headers_values.c \
+	debug/main.c \
+	parsing/parse_prep.c \
+	parsing/check_order.c \
+	parsing/validation.c \
+	parsing/config/headers.c \
+	parsing/config/headers_values.c \
     parsing/map/validation.c \
     win.c \
     render_canvas.c \
