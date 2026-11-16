@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/16 17:24:35 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/16 19:48:09 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	create_canvas(t_game *game)
 {
 	ft_bzero(game->screen.addr, HEIGHT * game->screen.size_line);
 	draw_background(game);
+	cast_rays(game);
 	render_texture(game, &game->w_north, -50, 0);
 	render_texture(game, &game->w_south, -50, 0);
 	render_texture(game, &game->w_est, -50, 0);
