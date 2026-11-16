@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/16 17:21:32 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/16 17:24:35 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	render_texture(t_game *game, t_img *img, int posx, int posy)
 		y++;
 	}
 }
-
 // -50 to hide textures
 
 void	create_canvas(t_game *game)
