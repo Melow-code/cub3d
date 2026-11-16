@@ -15,23 +15,16 @@
 
 # define HEIGHT 1080
 # define WIDTH 1920
-
-//mini_map
-
-# define LINE_LEN (TILE_SIZE * 1.1)
 # define MINI_OFFSET_X 100
 # define MINI_OFFSET_Y 400
-
 
 int		fill_path_img(t_img *img, char *path);
 int		run_win_mlx(t_game *game);
 int		game_loop(t_game *game);
 void	create_canvas(t_game *game);
-// CLEANING FUNTIONS
+// CLEANING FUNTIONS:
 void	clear_images(t_game *game);
 void	clear_paths(t_game *game);
 int		safe_exit(t_game *game, int code);
-//
 void	generate_minimap(t_game *game);
-
 #endif // H_WIN
