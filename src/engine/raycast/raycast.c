@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 17:00:35 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/16 19:10:12 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/16 19:51:46 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,14 @@ void	dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (game->map[ray->map_y][ray->map_x] == 1)
+		if (game->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
+	if (ray->side == 0)
+		ray->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
+	else
+		ray->perp_wall_dist = (ray->side_dist_y - ray->delta_dist_y);
+	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
 }
 
 void	cast_rays(t_game *game)
