@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-int	validate(t_game *game)
+int	validate_config(t_game *game)
 {
 	int	errno;
 
