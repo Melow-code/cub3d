@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/14 21:47:22 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/16 17:21:32 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,15 @@ static void	render_texture(t_game *game, t_img *img, int posx, int posy)
 	}
 }
 
+// -50 to hide textures
+
 void	create_canvas(t_game *game)
 {
 	ft_bzero(game->screen.addr, HEIGHT * game->screen.size_line);
-	render_texture(game, &game->w_north, 50, 200);
-	render_texture(game, &game->w_south, 150, 200);
-	render_texture(game, &game->w_est, 250, 200);
-	render_texture(game, &game->w_west, 350, 200);
+	draw_background(game);
+	render_texture(game, &game->w_north, -50, 0);
+	render_texture(game, &game->w_south, -50, 0);
+	render_texture(game, &game->w_est, -50, 0);
+	render_texture(game, &game->w_west, -50, 0);
 	generate_minimap(game);
 }

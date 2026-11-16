@@ -6,7 +6,7 @@
 /*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 15:00:51 by ch                #+#    #+#             */
-/*   Updated: 2026/11/12 15:00:57 by ch               ###   ########.ch       */
+/*   Updated: 2026/11/16 17:16:08 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define MINI_OFFSET_X 100
 # define MINI_OFFSET_Y 400
 
+
+void	draw_background(t_game *game);
 int		fill_path_img(t_img *img, char *path);
 int		run_win_mlx(t_game *game);
 int		game_loop(t_game *game);
