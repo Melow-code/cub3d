@@ -6,12 +6,13 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
-/*   Updated: 2026/11/16 18:40:07 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/16 19:45:05 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+# include <stdbool.h>
 
 typedef struct s_line
 {

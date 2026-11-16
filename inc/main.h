@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 16:28:15 by ch                #+#    #+#             */
-/*   Updated: 2026/11/14 21:43:30 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/16 19:50:59 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@
 # include <math.h>
 # include "textures.h"
 # include "mini_map.h"
+# include "raycast.h"
 #endif

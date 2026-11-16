@@ -19,6 +19,7 @@ SRC =main.c \
       engine/player/move_player.c \
       engine/player/player.c \
       engine/player/rotate_player.c \
+	  engine/raycast/raycast.c \
       \
 	  render/draw.c \
       render/init_graphics.c \
