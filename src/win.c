@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/10 23:35:36 by chguerre         ###   ########.fr       */
+/*   Created: 2026/11/12 17:26:06 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 17:26:06 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
-
-int	safe_exit(t_game *game, int code)
-{
-	clear_images(game);
-	clear_paths(game);
-	if (game->map != NULL)
-	{
-		ft_strfree(game->map);
-		game->map = NULL;
-	}
-	if (game->config != NULL)
-	{
-		ft_strfree(game->config);
-		game->config = NULL;
-	}
-	if (game->mlx_ptr && game->win_ptr)
-	{
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		game->win_ptr = NULL;
-	}
-	if (game->mlx_ptr)
-		mlx_destroy_display(game->mlx_ptr);
-	if (game->mlx_ptr)
-		free(game->mlx_ptr);
-	return (code);
-}
 
 int	close_window(void *param)
 {
@@ -47,22 +21,24 @@ int	close_window(void *param)
 	return (0);
 }
 
-int	handle_keypressed(int keycode, void *param)
+void	init_graphics(t_game *game)
 {
-	t_game	*game;
+	game->screen.img_ptr = mlx_new_image(game->mlx_ptr, WIDTH, HEIGHT);
+	if (!game->screen.img_ptr)
+		exit(safe_exit(game, 1));
+	game->screen.addr = mlx_get_data_addr(game->screen.img_ptr,
+			&game->screen.bpp, &game->screen.size_line, &game->screen.endian);
+	if (load_textures(game) != 0)
+		exit(safe_exit(game, 42));
+}
 
-	game = (t_game *)param;
-	ft_printf("%\n", keycode);
-	if (keycode == 13 || keycode == 119)
-		ft_printf("TECLA PRESIONADA W: %d\n", keycode);
-	if (keycode == 0 || keycode == 97)
-		ft_printf("TECLA PRESIONADA A: %d\n", keycode);
-	if (keycode == 1 || keycode == 115)
-		ft_printf("TECLA PRESIONADA S: %d\n", keycode);
-	if (keycode == 2 || keycode == 100)
-		ft_printf("TECLA PRESIONADA S: %d\n", keycode);
-	if (keycode == 53 || keycode == 65307)
-		exit(safe_exit(game, 0));
+int	game_loop(t_game *game)
+{
+	update_movement(game);
+	handle_rotation(&game->player);
+	create_canvas(game);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->screen.img_ptr, 0, 0);
 	return (0);
 }
 
@@ -72,9 +48,11 @@ int	run_win_mlx(t_game *game)
 	if (!game->mlx_ptr)
 		return (0);
 	game->win_ptr = mlx_new_window(game->mlx_ptr, WIDTH, HEIGHT, "Cub 3D - 42");
-	create_canvas(game);
+	init_graphics(game);
 	mlx_hook(game->win_ptr, 2, 1L << 0, (void *)handle_keypressed, game);
+	mlx_hook(game->win_ptr, 3, 1L << 1, (void *)handle_keyrelease, game);
 	mlx_hook(game->win_ptr, 17, 9, (void *)close_window, game);
+	mlx_loop_hook(game->mlx_ptr, (void *)game_loop, game);
 	mlx_loop(game->mlx_ptr);
 	return (0);
 }

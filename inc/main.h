@@ -5,21 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/03 18:22:06 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/13 16:20:50 by rpinheir         ###   ########.ch       */
+/*   Created: 2026/11/12 16:28:15 by ch                #+#    #+#             */
+/*   Updated: 2026/11/14 21:43:30 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_H
 # define MAIN_H
+
+# include "libft/libft.h"
+# include "minilibx/mlx.h"
+# include "struct.h"
 # include "colors.h"
 # include "debug.h"
 # include "exit.h"
-# include "libft/libft.h"
-# include "minilibx/mlx.h"
 # include "mlx_win.h"
 # include "parsing.h"
 # include "player.h"
-# include "struct.h"
+# include <math.h>
 # include "textures.h"
+# include "mini_map.h"
 #endif

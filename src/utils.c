@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 17:59:12 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 19:23:04 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/14 19:10:07 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,30 @@ int	fill_path_img(t_img *img, char *path)
 		free(img->path);
 	img->path = path_img;
 	return (0);
+}
+
+int	safe_exit(t_game *game, int code)
+{
+	clear_images(game);
+	clear_paths(game);
+	if (game->map != NULL)
+	{
+		ft_strfree(game->map);
+		game->map = NULL;
+	}
+	if (game->config != NULL)
+	{
+		ft_strfree(game->config);
+		game->config = NULL;
+	}
+	if (game->mlx_ptr && game->win_ptr)
+	{
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		game->win_ptr = NULL;
+	}
+	if (game->mlx_ptr)
+		mlx_destroy_display(game->mlx_ptr);
+	if (game->mlx_ptr)
+		free(game->mlx_ptr);
+	return (code);
 }

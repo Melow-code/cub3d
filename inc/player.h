@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 11:00:40 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/09 12:19:47 by chguerre         ###   ########.fr       */
+/*   Created: 2026/11/12 16:39:33 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 16:39:38 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,14 @@ enum	e_orient
 	OW
 };
 
-int	load_player_dt(t_game *game);
+int			load_player_dt(t_game *game);
+int			handle_keypressed(int keycodde, void *param);
+int			handle_keyrelease(int keycodde, void *param);
+void		update_movement(t_game *game);
+void		handle_rotation(t_player *p);
+void		draw_minimap_player(t_game *game, int px, int py);
+void		mini_dir_player(t_game *game, t_line *line, t_minimap *m);
+void		update_movement(t_game *game);
+int			move_player(t_player *p, char **map);
+
 #endif // PLAYER_H
