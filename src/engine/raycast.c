@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 17:00:35 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/16 19:20:21 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/16 19:39:53 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,27 @@ void	dda(t_game *game, t_ray *ray)
 		if (game->map[ray->map_y][ray->map_x] == 1)
 			ray->hit = 1;
 	}
+	if (ray->side == 0)
+		ray->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
+	else
+		ray->perp_wall_dist = (ray->side_dist_y - ray->delta_dist_y);
 }
 
-void	cast_rays(t_game *game, t_ray *ray)
+void	cast_rays(t_game *game)
 {
 	int			x;
+	t_ray		ray;
 
 	x = -1;
+	ft_bzero(&ray, sizeof(ray));
 	while (++x < WIDTH)
 	{
-		ray->hit = 0;
-		ray->camera_x = 2.0 * x / WIDTH - 1;
-		ray->ray_dir_x = game->player.dir_x
-			+ game->player.plane_x * ray->camera_x;
-		ray->ray_dir_y = game->player.dir_y
-			+ game->player.plane_y * ray->camera_x;
-		dda(game, ray);
+		ray.hit = 0;
+		ray.camera_x = 2.0 * x / WIDTH - 1;
+		ray.ray_dir_x = game->player.dir_x
+			+ game->player.plane_x * ray.camera_x;
+		ray.ray_dir_y = game->player.dir_y
+			+ game->player.plane_y * ray.camera_x;
+		dda(game, &ray);
 	}
 }
