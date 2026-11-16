@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 int	close_window(void *param)
 {

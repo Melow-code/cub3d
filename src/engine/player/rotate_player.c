@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 void	handle_rotation(t_player *p)
 {

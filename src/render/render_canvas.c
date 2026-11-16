@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 void	draw_square(t_game *game, int x, int y, int size)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 int	handle_keypressed(int keycode, void *param)
 {

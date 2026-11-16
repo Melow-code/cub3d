@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 void	put_pixel(int x, int y, int color, t_game *game)
 {

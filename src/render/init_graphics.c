@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 static int	init_img(t_img *img, void *mlx_ptr, char *path)
 {

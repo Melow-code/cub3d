@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 void	draw_square_tile(t_game *game, t_minimap *m, double pos_x, double pos_y)
 {
