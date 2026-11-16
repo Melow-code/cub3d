@@ -65,6 +65,6 @@ int	load_player_dt(t_game *game)
 	set_player_dir(&game->player, orientation);
 	set_player_plane(&game->player, orientation);
 	game->player.move_speed = 0.05;
-	game->player.rot_speed = 0.3;
+	game->player.rot_speed = 0.1;
 	return (1);
 }

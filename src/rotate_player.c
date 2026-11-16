@@ -25,13 +25,13 @@ void	handle_rotation(t_player *p)
 	{
 		cos_rot = cos(-p->rot_speed);
 		sin_rot = sin(-p->rot_speed);
-		ft_putendl_fd("turn to left", 2);
+		ft_putendl_fd("<-", 2);
 	}
 	if (p->key_rigth)
 	{
 		cos_rot = cos(p->rot_speed);
 		sin_rot = sin(p->rot_speed);
-		ft_putendl_fd("turn to rigth", 2);
+		ft_putendl_fd("->", 2);
 	}
 	old_dir_x = p->dir_x;
 	p->dir_x = old_dir_x * cos_rot - p->dir_y * sin_rot;
