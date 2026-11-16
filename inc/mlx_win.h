@@ -6,7 +6,7 @@
 /*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 15:00:51 by ch                #+#    #+#             */
-/*   Updated: 2026/11/16 19:15:24 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/16 20:08:58 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define HEIGHT 1080
 # define WIDTH 1920
-# define MINI_OFFSET_X 100
-# define MINI_OFFSET_Y 400
+# define MINI_OFFSET_X 0
+# define MINI_OFFSET_Y 0
 
 void	draw_background(t_game *game);
 int		fill_path_img(t_img *img, char *path);
