@@ -12,6 +12,24 @@
 
 #include "main.h"
 
+void	draw_background_map(t_game *game, t_minimap *m)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < m->height * m->tile_size)
+	{
+		x = 0;
+		while (x < m->width * m->tile_size)
+		{
+			put_pixel(MINI_OFFSET_X + x, MINI_OFFSET_Y + y, GRAY_MEDIUM, game);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	draw_square_tile(t_game *game, t_minimap *m, double pos_x, double pos_y)
 {
 	int			x;
@@ -20,15 +38,15 @@ void	draw_square_tile(t_game *game, t_minimap *m, double pos_x, double pos_y)
 	int			pixel_y;
 
 	y = 0;
-	while (y < m->tile_size - 1)
+	while (y < m->tile_size)
 	{
 		x = 0;
-		while (x < m->tile_size - 1)
+		while (x < m->tile_size)
 		{
 			pixel_x = pos_x + x;
 			pixel_y = pos_y + y;
-			if (pixel_x >= 0 && pixel_x < WIDTH
-				&& pixel_y >= 0 && pixel_y < HEIGHT)
+			if (pixel_x >= 0 && pixel_x <= WIDTH
+				&& pixel_y >= 0 && pixel_y <= HEIGHT)
 				put_pixel(pixel_x, pixel_y, m->color_tile, game);
 			x++;
 		}
@@ -53,7 +71,7 @@ void	draw_map(t_game *game, t_minimap *m, int map_width, int map_height)
 	int	pos_y;
 
 	my = 0;
-	while (my <= map_height - 1)
+	while (my < map_height)
 	{
 		mx = 0;
 		while (mx < map_width && game->map[my][mx])
@@ -78,7 +96,11 @@ void	generate_minimap(t_game *game)
 	ft_bzero(&line, sizeof(line));
 	ft_bzero(&mini_map, sizeof(mini_map));
 	calculate_size(game, &mini_map);
-	mini_map.tile_size = calculate_tile(mini_map.width, mini_map.height);
+	if (mini_map.width < 50)
+		mini_map.tile_size = size_tile(mini_map.width, mini_map.height);
+	else
+		mini_map.tile_size = 1.4 * size_tile(mini_map.width, mini_map.height);
+	draw_background_map(game, &mini_map);
 	draw_map(game, &mini_map, mini_map.width, mini_map.height);
 	posicion_minimapa(game, &mini_map, mini_pos);
 	draw_minimap_player(game, mini_pos[0], mini_pos[1]);
