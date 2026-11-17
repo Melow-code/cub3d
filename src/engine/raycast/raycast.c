@@ -82,6 +82,8 @@ void	dda(t_game *game, t_ray *ray)
 	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
 }
 
+// TODO: add debugging mode and add 		// draw_plane(game, &ray, x);
+
 void	cast_rays(t_game *game)
 {
 	int		x;
@@ -100,6 +102,5 @@ void	cast_rays(t_game *game)
 		dda(game, &ray);
 		draw_walls(game, &ray, x);
 		print_crosshair(game);
-		// draw_plane(game, &ray, x);
 	}
 }
