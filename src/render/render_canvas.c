@@ -33,28 +33,6 @@ void	draw_square(t_game *game, int x, int y, int size)
 	return ;
 }
 
-static void	render_texture(t_game *game, t_img *img, int posx, int posy)
-{
-	int				x;
-	int				y;
-	unsigned int	color;
-
-	if (posx < 0 || posx >= WIDTH || posy < 0 || posy >= HEIGHT)
-		return ;
-	y = 0;
-	while (y < img->heigth)
-	{
-		x = 0;
-		while (x < img->width)
-		{
-			color = get_pixel(img, x, y);
-			if (color != 0xff000000)
-				put_pixel(posx + x, posy + y, color, game);
-			x++;
-		}
-		y++;
-	}
-}
 // -50 to hide textures
 
 void	create_canvas(t_game *game)
@@ -62,9 +40,5 @@ void	create_canvas(t_game *game)
 	ft_bzero(game->screen.addr, HEIGHT * game->screen.size_line);
 	draw_background(game);
 	cast_rays(game);
-	render_texture(game, &game->w_north, -50, 0);
-	render_texture(game, &game->w_south, -50, 0);
-	render_texture(game, &game->w_est, -50, 0);
-	render_texture(game, &game->w_west, -50, 0);
 	generate_minimap(game);
 }
