@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 17:59:12 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/17 20:23:29 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/17 21:27:19 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ int	safe_exit(t_game *game, int code)
 
 double	get_time_in_seconds(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
+
 	gettimeofday(&tv,NULL);
 	return (tv.tv_sec + (tv.tv_usec / 1000000.0));
 }

@@ -35,10 +35,11 @@ void	init_graphics(t_game *game)
 int	game_loop(t_game *game)
 {
 	double	current_time;
+
 	current_time = get_time_in_seconds();
 	game->delta_time = current_time - game->last_time;
 	game->last_time = current_time;
-	if(game->delta_time > 0.1)
+	if (game->delta_time > 0.1)
 		game->delta_time = 0.1;
 	update_movement(game);
 	handle_rotation(&game->player, game);
