@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 16:28:15 by ch                #+#    #+#             */
-/*   Updated: 2026/11/16 19:50:59 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/17 20:07:09 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@
 # include "textures.h"
 # include "mini_map.h"
 # include "raycast.h"
+# include <sys/time.h>
 #endif

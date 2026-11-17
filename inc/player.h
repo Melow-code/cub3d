@@ -24,11 +24,10 @@ enum	e_orient
 int			load_player_dt(t_game *game);
 int			handle_keypressed(int keycodde, void *param);
 int			handle_keyrelease(int keycodde, void *param);
-void		update_movement(t_game *game);
-void		handle_rotation(t_player *p);
+void		handle_rotation(t_player *p, t_game *game);
 void		draw_minimap_player(t_game *game, int px, int py);
 void		mini_dir_player(t_game *game, t_line *line, t_minimap *m);
 void		update_movement(t_game *game);
-int			move_player(t_player *p, char **map);
+int			move_player(t_player *p, char **map, t_game *game);
 
 #endif // PLAYER_H

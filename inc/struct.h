@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
-/*   Updated: 2026/11/16 19:45:05 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/17 20:14:58 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ typedef struct s_img
 
 typedef struct s_game
 {
-	int			map_fd;
+	double		last_time;
+	double		delta_time;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	char		**config;
@@ -81,8 +82,8 @@ typedef struct s_game
 	int			cursorcreate_ca;
 	int			c_color[3];
 	int			f_color[3];
+	int			map_fd;
 	t_player	player;
-
 	t_img		screen;
 	t_img		w_north;
 	t_img		w_south;

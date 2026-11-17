@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:13:23 by ch                #+#    #+#             */
-/*   Updated: 2026/11/14 22:22:28 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/17 20:48:51 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	update_movement(t_game *game)
 	t_player	*p;
 
 	p = &game->player;
-	move_player(p, game->map);
+	move_player(p, game->map, game);
 }
 
 static int	set_player_plane(t_player *player, const int dir)
@@ -61,7 +61,7 @@ int	load_player_dt(t_game *game)
 {
 	set_player_dir(&game->player, game->player.orientation);
 	set_player_plane(&game->player, game->player.orientation);
-	game->player.move_speed = 0.05;
-	game->player.rot_speed = 0.1;
+	game->player.move_speed = 2.5;
+	game->player.rot_speed = 2.5;
 	return (1);
 }

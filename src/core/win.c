@@ -34,8 +34,14 @@ void	init_graphics(t_game *game)
 
 int	game_loop(t_game *game)
 {
+	double	current_time;
+	current_time = get_time_in_seconds();
+	game->delta_time = current_time - game->last_time;
+	game->last_time = current_time;
+	if(game->delta_time > 0.1)
+		game->delta_time = 0.1;
 	update_movement(game);
-	handle_rotation(&game->player);
+	handle_rotation(&game->player, game);
 	create_canvas(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		game->screen.img_ptr, 0, 0);
@@ -47,6 +53,7 @@ int	run_win_mlx(t_game *game)
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		return (0);
+	game->last_time = 0;
 	game->win_ptr = mlx_new_window(game->mlx_ptr, WIDTH, HEIGHT, "Cub 3D - 42");
 	init_graphics(game);
 	mlx_hook(game->win_ptr, 2, 1L << 0, (void *)handle_keypressed, game);

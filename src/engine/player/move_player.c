@@ -48,15 +48,15 @@ int	move_left(t_player *p, char **map, double speed, double pad)
 	return (0);
 }
 
-int	move_player(t_player *p, char **map)
+int	move_player(t_player *p, char **map, t_game *game)
 {
 	if (p->key_w)
-		move_up(p, map, p->move_speed, 0.30);
+		move_up(p, map, p->move_speed * game->delta_time, 0.30);
 	if (p->key_s)
-		move_down(p, map, p->move_speed, 0.30);
+		move_down(p, map, p->move_speed * game->delta_time, 0.30);
 	if (p->key_d)
-		move_rigth(p, map, p->move_speed, 0.30);
+		move_rigth(p, map, p->move_speed * game->delta_time, 0.30);
 	if (p->key_a)
-		move_left(p, map, p->move_speed, 0.30);
+		move_left(p, map, p->move_speed * game->delta_time, 0.30);
 	return (0);
 }
