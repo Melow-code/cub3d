@@ -96,13 +96,14 @@ void	generate_minimap(t_game *game)
 	ft_bzero(&line, sizeof(line));
 	ft_bzero(&mini_map, sizeof(mini_map));
 	calculate_size(game, &mini_map);
-	if (mini_map.width < 50)
-		mini_map.tile_size = size_tile(mini_map.width, mini_map.height);
-	else
-		mini_map.tile_size = 1.4 * size_tile(mini_map.width, mini_map.height);
+	mini_map.tile_size = size_tile(mini_map.width, mini_map.height);
+	if (mini_map.tile_size < 3)
+		mini_map.tile_size = 3;
+	if (mini_map.tile_size > 12)
+		mini_map.tile_size = 12;
 	draw_background_map(game, &mini_map);
 	draw_map(game, &mini_map, mini_map.width, mini_map.height);
 	posicion_minimapa(game, &mini_map, mini_pos);
-	draw_minimap_player(game, mini_pos[0], mini_pos[1]);
+	draw_minimap_player(game, mini_pos[0], mini_pos[1], &mini_map);
 	mini_dir_player(game, &line, &mini_map);
 }

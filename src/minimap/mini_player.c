@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 17:27:26 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/14 22:24:20 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/17 23:21:25 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
 	draw_line(game, line, 0xFFFF00);
 }
 
-void	draw_minimap_player(t_game *game, int px, int py)
+void	draw_minimap_player(t_game *game, int px, int py, t_minimap *m)
 {
 	int	size;
 	int	x;
 	int	y;
 
-	size = 10;
+	size = m->tile_size * 0.5;
 	y = -size / 2;
 	while (y < size / 2)
 	{
