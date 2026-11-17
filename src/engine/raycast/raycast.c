@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 17:00:35 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/16 19:51:46 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/17 13:23:03 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	dda(t_game *game, t_ray *ray)
 
 void	cast_rays(t_game *game)
 {
-	int			x;
-	t_ray		ray;
+	int		x;
+	t_ray	ray;
 
 	x = -1;
 	ft_bzero(&ray, sizeof(ray));
@@ -93,10 +93,13 @@ void	cast_rays(t_game *game)
 	{
 		ray.hit = 0;
 		ray.camera_x = 2.0 * x / WIDTH - 1;
-		ray.ray_dir_x = game->player.dir_x
-			+ game->player.plane_x * ray.camera_x;
-		ray.ray_dir_y = game->player.dir_y
-			+ game->player.plane_y * ray.camera_x;
+		ray.ray_dir_x = game->player.dir_x + game->player.plane_x
+			* ray.camera_x;
+		ray.ray_dir_y = game->player.dir_y + game->player.plane_y
+			* ray.camera_x;
 		dda(game, &ray);
+		draw_walls(game, &ray, x);
+		print_crosshair(game);
+		draw_plane(game, &ray, x);
 	}
 }
