@@ -23,6 +23,16 @@ void	draw_plane(t_game *game, t_ray *ray, int x)
 	color = 0x0000011;
 	put_pixel(x, ray->draw_start, color, game);
 	put_pixel(x, ray->draw_end, color, game);
+	while (y < HEIGHT)
+	{
+		put_pixel(WIDTH / 2, y, color, game);
+		y++;
+	}
+	while (_x < WIDTH)
+	{
+		put_pixel(_x, HEIGHT / 2, color, game);
+		_x++;
+	}
 }
 
 void	print_crosshair(t_game *game)
