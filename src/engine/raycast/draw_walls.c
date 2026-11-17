@@ -14,21 +14,29 @@
 
 void	choose_wall(t_game *game, t_ray *ray)
 {
-	int		tex_num;
 	double	wall_x;
 
-	tex_num = game->map[ray->map_x][ray->map_y] - 1;
 	if (ray->side == 0)
 		wall_x = game->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
 	else
 		wall_x = game->player.pos_x + ray->perp_wall_dist * ray->ray_dir_x;
-	wall_x = floor(wall_x);
+	wall_x -= floor(wall_x);
+	if (ray->side == 0 && ray->ray_dir_x < 0)
+		ray->texture = &game->w_est;
+	else if (ray->side == 0 && ray->ray_dir_x > 0)
+		ray->texture = &game->w_west;
+	else if (ray->side == 1 && ray->ray_dir_y > 0)
+		ray->texture = &game->w_north;
+	else
+		ray->texture = &game->w_south;
+	ray->tex_x = (int)(wall_x * ray->texture->width);
+	if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1
+			&& ray->ray_dir_y < 0))
+		ray->tex_x = ray->texture->width - ray->tex_x - 1;
+	ray->tex_step = (double)ray->texture->heigth / ray->line_height;
+	ray->tex_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2)
+		* ray->tex_step;
 }
-
-// side 0 == EAST | WEST
-// side 1 == NORTH | SOUTH
-// side 0 + raydir_x > 0 = WEST
-// side 1 + ray_dir_x < 0 =  SOUTH
 
 void	draw_walls(t_game *game, t_ray *ray, int x)
 {
@@ -40,40 +48,18 @@ void	draw_walls(t_game *game, t_ray *ray, int x)
 	ray->draw_end = HEIGHT / 2 + ray->line_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	if (ray->draw_start == HEIGHT)
-		ray->draw_start = HEIGHT - 1;
-	color = 0x0ff00ff; // get_pixel(&game->w_est, x, y);
-	if (ray->side == 1)
-		color = 0x0dea943;
+	if (ray->draw_end >= HEIGHT)
+		ray->draw_end = HEIGHT - 1;
 	y = ray->draw_start;
+	choose_wall(game, ray);
 	while (y <= ray->draw_end)
 	{
+		ray->tex_y = (int)ray->tex_pos;
+		color = get_pixel(ray->texture, ray->tex_x, ray->tex_y);
+		if (ray->tex_y > ray->texture->heigth)
+			ray->tex_y = ray->texture->heigth;
+		ray->tex_pos += ray->tex_step;
 		put_pixel(x, y, color, game);
 		y++;
 	}
 }
-
-/*
-static void	render_texture(t_game *game, t_img *img, int posx, int posy)
-{
-	int				x;
-	int				y;
-	unsigned int	color;
-
-	if (posx < 0 || posx >= WIDTH || posy < 0 || posy >= HEIGHT)
-		return ;
-	y = 0;
-	while (y < img->heigth)
-	{
-		x = 0;
-		while (x < img->width)
-		{
-			color = get_pixel(img, x, y);
-			if (color != 0xff000000)
-				put_pixel(posx + x, posy + y, color, game);
-			x++;
-		}
-		y++;
-	}
-}
-*/
