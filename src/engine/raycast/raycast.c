@@ -100,6 +100,6 @@ void	cast_rays(t_game *game)
 		dda(game, &ray);
 		draw_walls(game, &ray, x);
 		print_crosshair(game);
-		draw_plane(game, &ray, x);
+		// draw_plane(game, &ray, x);
 	}
 }
