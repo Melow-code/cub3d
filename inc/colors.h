@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 10:49:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/17 22:44:54 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/18 00:11:48 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 # define GRAY_MEDIUM 0x808080
 # define GRAY_DARK   0x404040
 # define GRAY_CHARCOAL 0x242424
-
 
 /*	===BACKGROUND	=== */
 # define BG_RED "\033[41m"
