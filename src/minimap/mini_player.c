@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 17:27:26 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/17 23:49:23 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/17 23:51:22 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
 void	draw_minimap_player(t_game *game, int px, int py, t_minimap *m)
 {
 	float	size;
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	size = m->tile_size * 0.7;
 	y = -size / 2;
