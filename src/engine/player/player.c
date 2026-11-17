@@ -34,13 +34,13 @@ void	update_movement(t_game *game)
 static int	set_player_plane(t_player *player, const int dir)
 {
 	if (dir == ON)
-		return (player->plane_x = 0.66, player->plane_y = 0.0, 1);
+		return (player->plane_x = 0.99, player->plane_y = 0.0, 1);
 	if (dir == OS)
-		return (player->plane_x = -0.66, player->plane_y = 0.0, 1);
+		return (player->plane_x = -0.99, player->plane_y = 0.0, 1);
 	if (dir == OE)
-		return (player->plane_x = 0.0, player->plane_y = 0.66, 1);
+		return (player->plane_x = 0.0, player->plane_y = 0.99, 1);
 	if (dir == OW)
-		return (player->plane_x = 0.0, player->plane_y = -0.66, 1);
+		return (player->plane_x = 0.0, player->plane_y = -0.99, 1);
 	return (0);
 }
 
