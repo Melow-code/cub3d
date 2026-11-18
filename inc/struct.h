@@ -6,12 +6,13 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
-/*   Updated: 2026/11/14 22:15:52 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/16 19:45:05 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+# include <stdbool.h>
 
 typedef struct s_line
 {
@@ -88,4 +89,32 @@ typedef struct s_game
 	t_img		w_est;
 	t_img		w_west;
 }				t_game;
+
+typedef struct s_ray
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		hit;
+	int		side;
+	double	perp_wall_dist;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	double	tex_step;
+	double	tex_pos;
+	t_img	*texture;
+}	t_ray;
+
 #endif

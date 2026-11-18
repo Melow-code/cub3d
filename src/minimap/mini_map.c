@@ -6,11 +6,11 @@
 /*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:24:29 by ch                #+#    #+#             */
-/*   Updated: 2026/11/12 17:24:59 by ch               ###   ########.ch       */
+/*   Updated: 2026/11/16 20:07:37 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 void	draw_square_tile(t_game *game, t_minimap *m, double pos_x, double pos_y)
 {
@@ -56,7 +56,7 @@ void	draw_map(t_game *game, t_minimap *m, int map_width, int map_height)
 	while (my <= map_height - 1)
 	{
 		mx = 0;
-		while (mx <= map_width - 1)
+		while (mx < map_width && game->map[my][mx])
 		{
 			m->color_tile = select_color(game->map[my][mx],
 					game->player.orientation);

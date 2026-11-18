@@ -12,6 +12,50 @@
 
 #include "main.h"
 
+void	draw_plane(t_game *game, t_ray *ray, int x)
+{
+	int	color;
+	int	y;
+	int	_x;
+
+	y = 0;
+	_x = 0;
+	color = 0x0000011;
+	put_pixel(x, ray->draw_start, color, game);
+	put_pixel(x, ray->draw_end, color, game);
+	while (y < HEIGHT)
+	{
+		put_pixel(WIDTH / 2, y, color, game);
+		y++;
+	}
+	while (_x < WIDTH)
+	{
+		put_pixel(_x, HEIGHT / 2, color, game);
+		_x++;
+	}
+}
+
+void	print_crosshair(t_game *game)
+{
+	int	cross_x;
+	int	color;
+	int	y;
+
+	y = HEIGHT / 2 - 15;
+	color = 0x0000011;
+	cross_x = WIDTH / 2 - 15;
+	while (cross_x < WIDTH / 2 + 15)
+	{
+		put_pixel(cross_x, HEIGHT / 2, color, game);
+		cross_x++;
+	}
+	while (y < HEIGHT / 2 + 15)
+	{
+		put_pixel(WIDTH / 2, y, color, game);
+		y++;
+	}
+}
+
 void	print_data(t_game *game)
 {
 	int	x;

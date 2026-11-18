@@ -6,11 +6,11 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/14 21:47:22 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/16 19:48:09 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "main.h"
 
 void	draw_square(t_game *game, int x, int y, int size)
 {
@@ -33,35 +33,12 @@ void	draw_square(t_game *game, int x, int y, int size)
 	return ;
 }
 
-static void	render_texture(t_game *game, t_img *img, int posx, int posy)
-{
-	int				x;
-	int				y;
-	unsigned int	color;
-
-	if (posx < 0 || posx >= WIDTH || posy < 0 || posy >= HEIGHT)
-		return ;
-	y = 0;
-	while (y < img->heigth)
-	{
-		x = 0;
-		while (x < img->width)
-		{
-			color = get_pixel(img, x, y);
-			if (color != 0xff000000)
-				put_pixel(posx + x, posy + y, color, game);
-			x++;
-		}
-		y++;
-	}
-}
+// -50 to hide textures
 
 void	create_canvas(t_game *game)
 {
 	ft_bzero(game->screen.addr, HEIGHT * game->screen.size_line);
-	render_texture(game, &game->w_north, 50, 200);
-	render_texture(game, &game->w_south, 150, 200);
-	render_texture(game, &game->w_est, 250, 200);
-	render_texture(game, &game->w_west, 350, 200);
+	draw_background(game);
+	cast_rays(game);
 	generate_minimap(game);
 }

@@ -9,27 +9,34 @@ LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstrict-prototypes -Wpointer-arith
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
-SRC = main.c \
-	debug/main.c \
-	parsing/parse_prep.c \
-	parsing/check_order.c \
-	parsing/validation.c \
-	parsing/config/headers.c \
-	parsing/config/headers_values.c \
-    parsing/map/validation.c \
-    win.c \
-    render_canvas.c \
-    utils.c \
-    draw.c \
-    mini_map.c \
-    player.c \
-    move_player.c \
-    keys_actions.c \
-    init_graphics.c \
-    rotate_player.c \
-    mini_player.c \
-    utils_minimap.c 
-
+SRC =main.c \
+      core/utils.c \
+      core/win.c \
+      \
+	  debug/main.c \
+      \
+	  engine/player/keys_actions.c \
+      engine/player/move_player.c \
+      engine/player/player.c \
+      engine/player/rotate_player.c \
+	  engine/raycast/raycast.c \
+	  engine/raycast/draw_walls.c \
+      \
+	  render/draw.c \
+      render/init_graphics.c \
+      render/render_canvas.c \
+	  \
+      minimap/mini_map.c \
+      minimap/mini_player.c \
+      minimap/utils_minimap.c \
+	  \
+      parsing/check_order.c \
+      parsing/parse_prep.c \
+      parsing/validation.c \
+      parsing/config/headers.c \
+      parsing/config/headers_values.c \
+      parsing/config/validation.c \
+      parsing/map/parse_map.c 
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
