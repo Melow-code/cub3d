@@ -29,5 +29,6 @@ void		draw_minimap_player(t_game *game, int px, int py, t_minimap *m);
 void		mini_dir_player(t_game *game, t_line *line, t_minimap *m);
 void		update_movement(t_game *game);
 int			move_player(t_player *p, char **map, t_game *game);
+void		draw_line(t_game *game, t_line *line, int color);
 
 #endif // PLAYER_H
