@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 12:43:25 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/16 12:43:27 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/17 22:53:42 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 
 unsigned int	select_color(char c, char orientation);
 void			calculate_size(t_game *game, t_minimap *m);
-int				calculate_tile(int map_width, int map_height);
+int				size_tile(int map_width, int map_height);
 #endif //MINI_MAP_H

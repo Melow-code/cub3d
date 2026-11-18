@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 10:49:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/11 10:52:56 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/18 00:11:48 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 # define FG_BOLD_WHITE "\033[1;37m"
 # define FG_CYAN "\033[36m"
 # define FG_BOLD_CYAN "\033[1;36m"
+# define GRAY_LIGHT  0xD3D3D3
+# define GRAY_MEDIUM 0x808080
+# define GRAY_DARK   0x404040
+# define GRAY_CHARCOAL 0x242424
 
 /*	===BACKGROUND	=== */
 # define BG_RED "\033[41m"

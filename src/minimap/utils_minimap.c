@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_minimap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 21:37:22 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/14 21:47:05 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/17 23:14:49 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 unsigned int	select_color(char c, char orientation)
 {
+	(void)orientation;
 	if (c == '1')
 		return (0xFFFFFF);
-	else if (c == '0' || c == orientation)
+	else if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (0x1E293B);
-	return (0);
+	return (GRAY_MEDIUM);
 }
 
-int	calculate_tile(int map_width, int map_height)
+int	size_tile(int map_width, int map_height)
 {
 	if (((WIDTH / 4) / map_width) < ((HEIGHT / 4) / map_height))
 		return ((WIDTH / 4) / map_width);
@@ -45,5 +46,5 @@ void	calculate_size(t_game *game, t_minimap *m)
 		h++;
 	}
 	m->height = h;
-	m->width = w;
+	m->width = w_max;
 }

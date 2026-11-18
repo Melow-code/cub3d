@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 17:27:26 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/14 22:24:20 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/17 23:51:22 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
 		line->step = abs((int)line->dy);
 	if (line->step == 0)
 	{
-		put_pixel((int)round(line->x0), (int)round(line->x0), 0xFFFF00, game);
+		put_pixel(line->x0, line->x0, 0xFFFF00, game);
 		return ;
 	}
 	line->inc_x = line->dx / (float)line->step;
@@ -54,13 +54,13 @@ void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
 	draw_line(game, line, 0xFFFF00);
 }
 
-void	draw_minimap_player(t_game *game, int px, int py)
+void	draw_minimap_player(t_game *game, int px, int py, t_minimap *m)
 {
-	int	size;
-	int	x;
-	int	y;
+	float	size;
+	int		x;
+	int		y;
 
-	size = 10;
+	size = m->tile_size * 0.7;
 	y = -size / 2;
 	while (y < size / 2)
 	{
