@@ -3,8 +3,8 @@ SO  assets/test/south.xpm
 WE  assets/test/west.xpm
 EA  assets/test/east.xpm
 
-F 220,100,0
-C 225,30,0
+F 26,28,34
+C 12,18,32
 
         1111111111111111111111111
         1000000000110000000000001

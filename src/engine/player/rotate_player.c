@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-void	handle_rotation(t_player *p)
+void	handle_rotation(t_player *p, t_game *game)
 {
 	double	cos_rot;
 	double	sin_rot;
@@ -23,15 +23,13 @@ void	handle_rotation(t_player *p)
 		return ;
 	if (p->key_left)
 	{
-		cos_rot = cos(-p->rot_speed);
-		sin_rot = sin(-p->rot_speed);
-		ft_putendl_fd("<-", 2);
+		cos_rot = cos(-p->rot_speed * game->delta_time);
+		sin_rot = sin(-p->rot_speed * game->delta_time);
 	}
 	if (p->key_rigth)
 	{
-		cos_rot = cos(p->rot_speed);
-		sin_rot = sin(p->rot_speed);
-		ft_putendl_fd("->", 2);
+		cos_rot = cos(p->rot_speed * game->delta_time);
+		sin_rot = sin(p->rot_speed * game->delta_time);
 	}
 	old_dir_x = p->dir_x;
 	p->dir_x = old_dir_x * cos_rot - p->dir_y * sin_rot;
