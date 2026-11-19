@@ -104,6 +104,7 @@ void	generate_minimap(t_game *game)
 	draw_background_map(game, &mini_map);
 	draw_map(game, &mini_map, mini_map.width, mini_map.height);
 	posicion_minimapa(game, &mini_map, mini_pos);
-	draw_minimap_player(game, mini_pos[0], mini_pos[1], &mini_map);
 	mini_dir_player(game, &line, &mini_map);
+	draw_minimap_pov(game, &mini_map);
+	draw_minimap_player(game, mini_pos[0], mini_pos[1], &mini_map);
 }

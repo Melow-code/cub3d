@@ -29,6 +29,7 @@ SRC =main.c \
       minimap/mini_map.c \
       minimap/mini_player.c \
       minimap/utils_minimap.c \
+	  minimap/ray_minimap.c \
 	  \
       parsing/check_order.c \
       parsing/parse_prep.c \
@@ -36,7 +37,7 @@ SRC =main.c \
       parsing/config/headers.c \
       parsing/config/headers_values.c \
       parsing/config/validation.c \
-      parsing/map/parse_map.c 
+      parsing/map/parse_map.c
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################

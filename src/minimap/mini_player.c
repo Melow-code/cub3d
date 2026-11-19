@@ -6,13 +6,13 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 17:27:26 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/17 23:51:22 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/18 19:37:01 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static void	draw_line(t_game *game, t_line *line, int color)
+void	paint_line(t_game *game, t_line *line, int color)
 {
 	int	i;
 
@@ -27,15 +27,8 @@ static void	draw_line(t_game *game, t_line *line, int color)
 	}
 }
 
-void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
+void	draw_line(t_game *game, t_line *line, int color)
 {
-	t_player	*player;
-
-	player = &game->player;
-	line->x0 = (double)MINI_OFFSET_X + (player->pos_x * (double)m->tile_size);
-	line->y0 = (double)MINI_OFFSET_Y + (player->pos_y * (double)m->tile_size);
-	line->x1 = line->x0 + player->dir_x * (m->tile_size * 1.1);
-	line->y1 = line->y0 + player->dir_y * (m->tile_size * 1.1);
 	line->dx = line->x1 - line->x0;
 	line->dy = line->y1 - line->y0;
 	if (abs((int)line->dx) > abs((int)line->dy))
@@ -51,6 +44,18 @@ void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
 	line->inc_y = line->dy / (float)line->step;
 	line->curr_x = line->x0;
 	line->curr_y = line->y0;
+	paint_line(game, line, color);
+}
+
+void	mini_dir_player(t_game *game, t_line *line, t_minimap *m)
+{
+	t_player	*player;
+
+	player = &game->player;
+	line->x0 = (double)MINI_OFFSET_X + (player->pos_x * (double)m->tile_size);
+	line->y0 = (double)MINI_OFFSET_Y + (player->pos_y * (double)m->tile_size);
+	line->x1 = line->x0 + player->dir_x * (m->tile_size * 1.1);
+	line->y1 = line->y0 + player->dir_y * (m->tile_size * 1.1);
 	draw_line(game, line, 0xFFFF00);
 }
 
