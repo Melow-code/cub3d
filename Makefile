@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 SRCDIR = src
 OBJDIR = .obj
 INCDIR = inc
@@ -6,6 +6,8 @@ MINILIB_DIR = $(INCDIR)/minilibx
 MINILIB = $(MINILIB_DIR)/libmlx.a
 LIBFT_DIR = $(INCDIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
+DEBUG = 0
+BONUS = 0
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstrict-prototypes -Wpointer-arith
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
@@ -70,7 +72,7 @@ all: $(NAME) compile_flags.txt
 	@printf " $(C)✅ [$(NAME)] $(B)Build complete$(X)\n"
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
-	@$(CC) $(CFLAGS) -L$(LIBFT_DIR)  $(OBJ) $(LIBFT) -L$(MINILIB_DIR) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
+	@$(CC) $(CFLAGS) -DDEBUG=$(DEBUG) -DBONUS=$(BONUS) -L$(LIBFT_DIR)  $(OBJ) $(LIBFT) -L$(MINILIB_DIR) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 $(MINILIB):
 	@printf "$(Y) 📚 [MiniLibX] building... $(RESET)"
@@ -81,7 +83,7 @@ $(LIBFT):
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -DDEBUG=$(DEBUG) -DBONUS=$(BONUS) -c $< -o $@
 	@$(call progress,$(words $(SRC)))
 
 clean:
@@ -100,8 +102,13 @@ re: fclean all
 asan:  CFLAGS += $(VAL_FLAGS) $(ASAN_FLAGS)
 asan:  re
 
-run: re
-	./$(NAME)
+bonus:
+	make re BONUS=1
+
+debug:
+	make re DEBUG=1
+bonus-dbg:
+	make re BONUS=1 DEBUG=1
 
 norm:
 	@norminette src inc/*.h inc/libft | grep "Error" || echo "${G}No errors found :3${X}"
