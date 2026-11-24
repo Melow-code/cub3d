@@ -6,14 +6,14 @@
 /*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 15:00:51 by ch                #+#    #+#             */
-/*   Updated: 2026/11/24 15:41:01 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/24 16:08:01 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_WIN_H
 # define MLX_WIN_H
+# include "struct.h"
 
-#include "struct.h"
 # define HEIGHT 1080
 # define WIDTH 1920
 # define MINI_OFFSET_X 0
