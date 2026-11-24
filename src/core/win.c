@@ -6,7 +6,7 @@
 /*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:26:06 by ch                #+#    #+#             */
-/*   Updated: 2026/11/24 15:34:09 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/24 15:59:49 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	run_win_mlx(t_game *game)
 	init_graphics(game);
 	mlx_hook(game->win_ptr, 2, 1L << 0, (void *)handle_keypressed, game);
 	mlx_hook(game->win_ptr, 3, 1L << 1, (void *)handle_keyrelease, game);
+	mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
 	if (BONUS)
 		mlx_hook(game->win_ptr, MotionNotify, PointerMotionMask,
 			mouse_handler, game);

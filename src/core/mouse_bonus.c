@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/24 13:58:37 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/24 15:33:20 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/24 16:03:31 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	mouse_handler(int x, int y, t_game *game)
 	double			sin_rot;
 	double			angle;
 
-	mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
 	if (wrap_mouse_location(x, y, game) != 0)
 		return (0);
 	if (x == game->mouse_x)
