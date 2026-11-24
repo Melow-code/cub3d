@@ -27,4 +27,13 @@
 # include "mini_map.h"
 # include "raycast.h"
 # include <sys/time.h>
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
+# ifndef BONUS
+#  define BONUS 1
+# endif
+
 #endif
