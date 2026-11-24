@@ -29,7 +29,8 @@ int	main(int ac, char **av)
 	if (error)
 		return (safe_exit(&game, error));
 	load_player_dt(&game);
-	print_data(&game);
+	if (DEBUG)
+		print_data(&game);
 	run_win_mlx(&game);
 	return (safe_exit(&game, 0));
 }

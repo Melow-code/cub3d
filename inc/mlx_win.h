@@ -6,17 +6,19 @@
 /*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 15:00:51 by ch                #+#    #+#             */
-/*   Updated: 2026/11/16 20:08:58 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/24 16:19:43 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_WIN_H
 # define MLX_WIN_H
+# include "struct.h"
 
 # define HEIGHT 1080
 # define WIDTH 1920
 # define MINI_OFFSET_X 0
 # define MINI_OFFSET_Y 0
+# define DIST_EDGE_WRAP 20
 
 void	draw_background(t_game *game);
 int		fill_path_img(t_img *img, char *path);
@@ -29,4 +31,5 @@ void	clear_paths(t_game *game);
 int		safe_exit(t_game *game, int code);
 void	generate_minimap(t_game *game);
 double	get_time_in_seconds(void);
+int		mouse_handler(int x, int y, void *param);
 #endif // H_WIN

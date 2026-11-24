@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
-/*   Updated: 2026/11/17 20:14:58 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/24 15:15:15 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_game
 	int			c_color[3];
 	int			f_color[3];
 	int			map_fd;
+	int			mouse_x;
 	t_player	player;
 	t_img		screen;
 	t_img		w_north;
