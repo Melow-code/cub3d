@@ -1,3 +1,4 @@
+MAKEFLAGS += --silent
 NAME = cub3D
 SRCDIR = src
 OBJDIR = .obj
@@ -117,4 +118,4 @@ norm:
 compile_flags.txt: Makefile
 	@printf '%s\n' $(filter -I% -D% -std=%,$(CPPFLAGS) $(CFLAGS)) > $@
 
-.PHONY: all clean fclean re debug asan
+.PHONY: all clean fclean re debug asan bonus bonus-dbg
