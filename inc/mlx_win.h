@@ -6,7 +6,7 @@
 /*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 15:00:51 by ch                #+#    #+#             */
-/*   Updated: 2026/11/24 16:08:01 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/24 16:19:43 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	clear_paths(t_game *game);
 int		safe_exit(t_game *game, int code);
 void	generate_minimap(t_game *game);
 double	get_time_in_seconds(void);
-int		mouse_handler(int x, int y, t_game *game);
+int		mouse_handler(int x, int y, void *param);
 #endif // H_WIN

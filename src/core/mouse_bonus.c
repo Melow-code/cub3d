@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/24 13:58:37 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/24 16:03:31 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/24 16:20:48 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ static void	setup_rotation(double cos_rot, double sin_rot, t_game *game)
 		+ game->player.plane_y * cos_rot;
 }
 
-int	mouse_handler(int x, int y, t_game *game)
+int	mouse_handler(int x, int y, void *param)
 {
 	double			cos_rot;
 	double			sin_rot;
 	double			angle;
+	t_game			*game;
 
+	game = (t_game *)param;
 	if (wrap_mouse_location(x, y, game) != 0)
 		return (0);
 	if (x == game->mouse_x)
