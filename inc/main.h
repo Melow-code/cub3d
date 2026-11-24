@@ -13,6 +13,11 @@
 #ifndef MAIN_H
 # define MAIN_H
 
+# include <math.h>
+# include <sys/time.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+
 # include "libft/libft.h"
 # include "minilibx/mlx.h"
 # include "struct.h"
@@ -22,11 +27,9 @@
 # include "mlx_win.h"
 # include "parsing.h"
 # include "player.h"
-# include <math.h>
 # include "textures.h"
 # include "mini_map.h"
 # include "raycast.h"
-# include <sys/time.h>
 
 # ifndef DEBUG
 #  define DEBUG 0
