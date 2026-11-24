@@ -9,11 +9,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 DEBUG = 0
 BONUS = 0
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstrict-prototypes -Wpointer-arith
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wpointer-arith
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC =main.c \
       core/utils.c \
       core/win.c \
+	  core/mouse_bonus.c \
       \
 	  debug/main.c \
       \
